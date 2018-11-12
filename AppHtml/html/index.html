@@ -1,0 +1,69 @@
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="../javascript/jquery-3.3.1.js" charset="utf-8"></script>
+        <script src="../javascript/bootstrap.js" charset="utf-8"></script>
+        <script src="../javascript/main.js" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+        <title>SampleUpcomingPaymentApp</title>
+
+    </head>
+    <body>
+        <div class="container">
+          <div class="row p-3 mb-2 bg-dark text-white">
+            <h4>Upcoming payments</h4>
+          </div>
+
+          <div class="row">
+            <div class="col p-3 mb-2">
+              <p class="p-3 mb-2 bg-dark text-white">Upcoming Payments List</p>
+              <div class="">
+                <ul class="list-group" id="paymentsList">
+                </ul>
+              </div>
+            </div>
+            <div class="col p-3 mb-2">
+              <p class="p-3 mb-2 bg-dark text-white">
+                Add new payment
+              </p>
+              <form id="newPaymentForm">
+                <div class="form-group">
+                  <label for="">Payment description</label>
+                  <input type="text" name="Description" value=""  class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="">Amount</label>
+                  <input type="number" name="Amount" value=""  min="0" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="">Due date</label>
+                  <input type="date" name="DueDate" value=""   class="form-control">
+                </div>
+                <div class="form-group">
+                  <button type="button" name="button" id="newPaymentBtn" class="btn btn-success">Add new payment</button>
+                </div>
+              </form>
+              <div style="display:none;" id="errorsDiv" class="alert alert-danger" role="alert">
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+      $(function(){
+        refreshPaymentList();
+
+        $('#paymentsList').on('click','.markAsPaid', function(){
+          pay(this);
+        });
+
+        $('#newPaymentBtn').click(function(){
+          addNewPayment();
+        })
+      })
+    </script>
+    </html>
